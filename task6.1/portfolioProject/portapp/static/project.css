@@ -1,0 +1,45 @@
+.container {
+  height: 150vh;
+  width: 100vw;
+  background: url("../static/img/ocean.jpg") no-repeat center center;
+  background-size: cover;
+}
+
+.row {
+  width: 70%;
+  height: 10%;
+  background-color: aliceblue;
+  opacity: 0.7;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: space-around;
+}
+
+.bar {
+  font-size: 23px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0;
+}
+
+.show {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#image {
+  width: 20%;
+  height: 25%;
+  margin: 5%;
+}
+
+#head {
+  display: flex;
+  color: aliceblue;
+  font-size: 200%;
+}

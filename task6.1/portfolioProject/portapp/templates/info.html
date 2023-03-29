@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'info.css' %}" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>INFO</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <h3 class="bar">
+          <p><a href="{% url 'info' %}">info</a></p>
+          <p><a href="{% url 'project' %}">project</a></p>
+        </h3>
+      </div>
+
+      <div class="info">
+        <img id="me" src="../static/img/조원경.jpg" />
+
+        <div class="word">
+          <h1 id="first">about won-gyeong</h1>
+          <br />
+          <h2 id="second">
+            나는 "왜" 살아야 하는가에 대해서 늘 생각합니다 <br />
+            아직 명확한 답은 찾지 못했습니다 <br />
+            남은 인생동안 잘 찾을 수 있겠죠?
+          </h2>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
