@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'new.css' %}" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2 id="main">✍️ NEW!</h2>
+    <form action="/new" method="post">
+      {% csrf_token %}
+      <div class="body">
+        <div>카테고리 선택</div>
+        <select name="category" id="category">
+          <option value="development">개발</option>
+          <option value="hobby">취미</option>
+          <option value="fav_music">노래모음</option>
+        </select>
+
+        <div>
+          <div>TITLE</div>
+          <input type="text" name="title" />
+        </div>
+        <div>
+          <div>CONTENT</div>
+          <textarea name="content" cols="70" rows="30"></textarea>
+        </div>
+        <br />
+        <button type="submit">작성 완료</button>
+      </div>
+    </form>
+  </body>
+</html>

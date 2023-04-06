@@ -1,0 +1,47 @@
+body {
+  background-color: black;
+}
+
+#main {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  margin: 5 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  color: pink;
+}
+
+a:link {
+  color: pink;
+}
+a:visited {
+  color: pink;
+}
+a:hover {
+  color: lavender;
+}
+a:active {
+  color: pink;
+}
+
+.all {
+  border: 1px solid white;
+  height: 70%;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 20px;
+}
+
+.go {
+  font-size: 20px;
+}
+
+#now {
+  color: pink;
+}

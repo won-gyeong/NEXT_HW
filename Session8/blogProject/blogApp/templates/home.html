@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'home.css' %}" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2 id="main">Are you curious about me?</h2>
+    <div class="type">
+      <div class="letters">
+        <ul class="nodot">
+          {% for category in categories %}
+          <li style="color: white">
+            <a style="color: white" href="{% url 'category' category %}"
+              >{{category}}</a
+            >
+            <br />
+            {% endfor %}
+          </li>
+        </ul>
+      </div>
+      <br />
+      <div class="img_con">
+        <img id="dev" src="{% static 'img/development.png' %}" />
+        <img id="hobby" src="{% static 'img/hobby.jpg' %}" />
+        <img id="fav_music" src="{% static 'img/fav_music.jpg' %}" />
+      </div>
+    </div>
+    <br />
+    <a href="{% url 'new' %}" id="new">✍️ NEW!</a>
+    <br />
+    <br />
+    <a href="{% url 'list' %}" id="check">✔️ CHECK ALL</a>
+  </body>
+</html>

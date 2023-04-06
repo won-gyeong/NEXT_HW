@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {%load static%}
+    <link rel="stylesheet" type="text/css" href="{% static 'detail.css' %}" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2 id="main">DETAIL</h2>
+
+    <div class="all">
+      <div id="title">
+        <h2>TITLE</h2>
+        <p class="detail">{{article.title}}</p>
+      </div>
+
+      <div id="content">
+        <h2>CONTENT</h2>
+        <p class="detail">{{article.content}}</p>
+      </div>
+
+      <div id="cate">
+        <h2>CATEGORY</h2>
+        <p class="detail">{{article.category}}</p>
+      </div>
+    </div>
+    <br />
+    <a class="go" href="{% url 'list' %}">✔️ CHECK ALL</a>
+  </body>
+</html>

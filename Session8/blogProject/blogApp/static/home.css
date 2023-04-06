@@ -1,0 +1,83 @@
+body {
+  background-color: black;
+}
+
+#main {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  margin: 5 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  color: pink;
+}
+
+.type {
+  width: 80%;
+  height: 80%;
+  margin: 0 auto;
+  border: 1px solid white;
+}
+
+.nodot {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  list-style-type: none;
+  font-size: 29px;
+  margin: 10 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  color: inherit;
+  margin: 1 auto;
+}
+
+a:link {
+  color: pink;
+  text-decoration: none;
+}
+a:visited {
+  color: pink;
+  text-decoration: none;
+}
+a:hover {
+  color: lavender;
+  text-decoration: underline;
+}
+a:active {
+  color: pink;
+  text-decoration: none;
+}
+
+.img_con {
+  width: 100%;
+  height: 10%;
+  margin: 10 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+#dev {
+  width: 30%;
+  height: 30%;
+  border-radius: 50%;
+}
+
+#hobby {
+  width: 30%;
+  height: 30%;
+  border-radius: 50%;
+}
+#fav_music {
+  width: 30%;
+  height: 30%;
+  border-radius: 50%;
+}
+
+#new {
+  font-size: 20px;
+}
+
+#check {
+  font-size: 20px;
+}
