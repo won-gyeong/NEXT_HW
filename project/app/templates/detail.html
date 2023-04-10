@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {%load static%}
+    <link rel="stylesheet" type="text/css" href="{% static 'detail.css' %}" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2 id="main">DETAIL</h2>
+    <div class="all">
+      <div id="title">
+        <h2>📍TITLE</h2>
+        <p class="detail">{{post.title}}</p>
+      </div>
+
+      <div id="content">
+        <h2>✨CONTENT</h2>
+        <p class="detail">{{post.content}}</p>
+      </div>
+      <br />
+      <div id="dead">
+        <h2>🗓️UNTIL</h2>
+        <p class="detail">{{post.deadline}}</p>
+      </div>
+    </div>
+    <br />
+    <div>
+      <a href="{% url 'home'%}">🏠HOME</a> <br /><br />
+      <a href="{% url 'update' post.id %}">🔧UPDATE</a><br /><br />
+      <a href="{% url 'delete' post.id %}">💣DELETE</a>
+    </div>
+  </body>
+</html>

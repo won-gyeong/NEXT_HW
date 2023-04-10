@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'home.css' %}" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOCUMENT</title>
+  </head>
+  <body>
+    <h1 id="main">📒TO-DO LIST</h1>
+    <div class="type">
+      <div class="letters">
+        <ul class="nodot">
+          {% for post in posts %}
+          <li style="list-style: none">
+            <input
+              type="checkbox"
+              name="{{post.title}}"
+              value="{{post.title}}"
+            />
+            <a href="{% url 'detail' post.id %}">
+              {{ post.title }} [D-{{ post.end_date }}]
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <br />
+    <br />
+    <a href="{% url 'new' %}" id="new">✍️ NEW!</a>
+  </body>
+</html>
