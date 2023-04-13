@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block css %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'detail.css' %}" />
+{% endblock %} 
+
+{% block title %} DETAIL {% endblock %} 
+
+{% block content %}
+  <body>
+    <div class="all">
+        <div id="title">
+          <h2>📍TITLE</h2>
+          <p class="detail">{{post.title}}</p>
+        </div>
+
+        <div id="content">
+          <h2>✨CONTENT</h2>
+          <p class="detail">{{post.content}}</p>
+        </div>
+      <br />
+
+        <div id="dead">
+          <h2>🗓️UNTIL</h2>
+          <p class="detail">{{post.deadline}}</p>
+        </div>
+
+      <!-- comments 섹션 -->
+      <div class="comments">
+        <form method="POST">
+          {% csrf_token %}
+          <input type="text" name="content" placeholder="댓글 입력">
+          <button type="submit">작성하기</button>
+        </form>
+
+        <div id="comment">
+          {% for comment in post.comments.all %}
+          <li>{{comment.content}}</li>
+          <a href="{% url 'delete_comment' post.id comment.id %}">댓글 삭제</a>
+        </div>
+        
+
+        <div class="recomment" style="margin-left: 100px;">
+          {% for recomment in comment.recomments.all %}
+          <li style="list-style-type: none;"> - {{recomment.content}}</li>
+          {% endfor %}
+        </div>
+
+        <form action="{% url 'recomment' post.id comment.id %}" method="POST">
+          {% csrf_token %}
+          <input type="text" name="content" placeholder="대댓글 입력">
+          <button type="submit">작성하기</button>
+        </form>
+        {% endfor %}
+      </div> 
+      <br />
+    <br />
+    <div>
+      <a href="{% url 'home'%}">🏠HOME</a> <br /><br />
+      <a href="{% url 'update' post.id %}">🔧UPDATE</a><br /><br />
+      <a href="{% url 'delete' post.id %}">💣DELETE</a>
+    </div>
+    {% endblock %}
+    <br>
+    <br>
+    <br>
+    {% block footer %} 조원경이 힘겹게 만든 DETAIL 페이지입니다...{% endblock %}
+  </body>
+</html>
