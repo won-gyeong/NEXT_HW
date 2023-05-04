@@ -1,0 +1,49 @@
+{% extends 'blog/base.html' %}
+
+{% block css %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'update.css' %}" />
+{% endblock %} 
+
+{% block title %} EDIT {% endblock %} 
+
+{% block content %}
+  <body>
+    <form action="" method="post">
+      {% csrf_token %}
+      <div class="body">
+        <label for="title">📍TITLE</label>
+        <input type="text" name="title" id="title" value="{{post.title}}" />
+        <br />
+
+        <div>
+          <label for="content">✨CONTENT</label>
+          <br />
+          <textarea name="content" id="content" cols="30" rows="10">
+{{ post.content }}</textarea
+          >
+        </div>
+        <br />
+
+        <div>
+          <label for="deadline">🗓️UNTIL</label>
+          <br />
+          <input
+            type="date"
+            id="deadline"
+            name="deadline"
+            placeholder="0000-00-00"
+          />
+        </div>
+
+        <br />
+        <button type="submit">EDIT</button>
+      </div>
+    </form>
+    {% endblock %}
+    <br>
+    <br>
+    <br>
+    {% block footer %} copyright 2023. 원경 all rights reserved {% endblock %}
+  </body>
+</html>

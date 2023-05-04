@@ -1,0 +1,84 @@
+<head>
+    {% load account socialaccount %}
+    {% providers_media_js %}
+    {% load static %}
+    <meta charset="UTF-8" />
+    <link rel="shortcut icon" href="{% static 'favicon.png' %}" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ceviche+One&family=Inter:wght@900&family=Jua&family=Koulen&display=swap"
+      rel="stylesheet"
+   />
+    <link rel="stylesheet" type="text/css" href="{% static 'base.css' %}" />
+    {% block css %} {% endblock css %}
+    <title>Project</title>
+  </head>
+ 
+ 
+  <body>
+    <div id="nav_bar" >
+      <div class="navbar__logo">
+        <a href="{% url 'blog:home'%}">🏠HOME</a>
+      </div>
+      <ul class="navbar__menu">
+        {% if user.is_authenticated %}
+        <span class="navbar__menu__item">HELLO, {{user.username}} / </span>
+          <li class="navbar__menu__item">
+            <a href="{% url 'blog:logout'%}">로그아웃 / </a>
+          </li>
+          <li class="navbar__menu__item">
+            <a href="{% url 'blog:new' %}">NEW / </a>
+          </li>
+          {% else %}
+          <li class="navbar__menu__item">
+            <a href="{% url 'blog:signup' %}">회원가입 / </a>
+          </li>
+          <li class="navbar__menu__item">
+            <a href="{% url 'blog:login' %}">로그인 / </a>
+          </li>
+        </ul>
+          
+          <form
+            method = "POST" 
+            action="{% provider_login_url 'kakao' %}">
+              {% csrf_token %} {{ form.as_p }} {% if redirect_field_value %}
+              <input
+              type ="hidden"
+              name="{{ redirect_field_name }}"
+              value="{{ redirect_field_value }}"/>
+              {% endif %}
+              <button class = "primaryAction" type="submit"> 
+                <img id="kakao" src="../static/img/kakao.png">
+              </button>
+            </form>
+            <span>   /   </span>
+            <form
+            method = "POST" 
+            action="{% provider_login_url 'google' %}">
+              {% csrf_token %} {{ form.as_p }} {% if redirect_field_value %}
+              <input
+              type ="hidden"
+              name="{{ redirect_field_name }}"
+              value="{{ redirect_field_value }}"/>
+              {% endif %}
+              <button class = "primaryAction" type="submit">
+                <img id="google" src="../static/img/google.png">
+              </button>
+          </form>
+
+
+          {% endif %}
+
+          
+    </div>
+    <div class="title">{% block title %} {% endblock title %}</div>
+    <div class="container">{% block content %} {% endblock content %}</div>
+    <!-- footer -->
+  <div class="footer">{% block footer %} {% endblock footer %} </div>
+  
+</body>
+ </html>
+ 

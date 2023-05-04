@@ -1,0 +1,67 @@
+body {
+  background-color: black;
+}
+
+.all {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+}
+
+.detail {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+}
+#reply {
+  margin-left: 20px;
+}
+
+.comments {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-starts;
+  align-items: flex-start;
+  font-size: 20px;
+}
+
+#comment {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  font-size: 20px;
+}
+
+a:link {
+  color: pink;
+}
+a:visited {
+  color: pink;
+}
+a:hover {
+  color: lavender;
+}
+a:active {
+  color: pink;
+}
+
+.go {
+  font-size: 20px;
+}
+
+#parents {
+  margin: 0 auto;
+}
