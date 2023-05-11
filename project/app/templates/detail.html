@@ -1,0 +1,115 @@
+{% extends 'base.html' %} {% block content %}
+<div>
+  <div>
+    <div class="post_title">{{ post.title }}</div>
+    <div class="post_content">{{ post.content }}</div>
+  </div>
+  <a href="{% url 'home' %}">홈으로</a>
+
+  {% if user.is_authenticated and post.author.pk == user.pk %}
+  <a href="{% url 'edit' post.pk %}">수정하기</a>
+  <a href="{% url 'delete' post.pk %}">삭제하기</a>
+  <span class="like-count">좋아요 {{ post.likes.count }}개 </span>
+  {% endif %} {% for comment in post.comments.all %}
+  <li>{{ comment.content }}</li>
+  {% if user.is_authenticated and comment.author.pk == user.pk %}
+  <a href="{% url 'delete_comment' post.pk comment.pk %}">댓글 삭제</a>
+  {% endif %} {% endfor %} {% if user.is_authenticated %}
+  <!-- 댓글 작성 폼 -->
+  <form class="comment-form">
+    <input type="text" class="comment-input" placeholder="댓글을 입력하세요" />
+    <button type="submit" class="comment-button">댓글 쓰기</button>
+  </form>
+
+  <!-- 댓글 목록 -->
+  <div class="comment-list"></div>
+
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script>
+    const commentForm = document.querySelector(".comment-form");
+    const commentInput = document.querySelector(".comment-input");
+    const commentList = document.querySelector(".comment-list");
+
+    const handleComment = async (event) => {
+      event.preventDefault();
+
+      const comment = commentInput.value.trim();
+
+      try {
+        const response = await axios.post("/detail/" + "{{post.pk}}", {
+          post_pk: "{{post.pk}}",
+          content: comment,
+        });
+
+        console.log(response);
+
+        const newComment = document.createElement("div");
+        newComment.classList.add("comment");
+        newComment.innerText = response.data.content;
+
+        commentList.appendChild(newComment);
+
+        commentInput.value = "";
+      } catch (e) {
+        console.error(e);
+      }
+    };
+
+    commentForm.addEventListener("submit", handleComment);
+  </script>
+
+  <button class="like-button">조와용</button>
+  <!-- <script>
+    const likeButton = document.querySelector(".like-button");
+    const likeCount = document.querySelector(".like-count");
+    const handleLike = () => {
+      fetch("/like", {
+        method: "POST",
+        body: JSON.stringify({
+          post_pk: "{{ post.pk }}",
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          likeCount.innerHTML = `좋아요 ${data.like_count}개`;
+        });
+    };
+
+    likeButton.addEventListener("click", handleLike);
+  </script> -->
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    const likeButton = document.querySelector(".like-button");
+    const likeCount = document.querySelector(".like-count");
+    const handleLike = () => {
+      axios
+        .post(
+          "/like",
+          {
+            post_pk: "{{ post.pk }}",
+          },
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        )
+        .then((response) => {
+          const data = response.data;
+          likeCount.innerHTML = `좋아요 ${data.like_count}개`;
+        })
+        .catch((e) => {
+          console.error(e);
+        });
+    };
+
+    likeButton.addEventListener("click", handleLike);
+  </script>
+  {% endif %}
+</div>
+
+{% endblock content %}
